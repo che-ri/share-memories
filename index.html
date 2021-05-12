@@ -10,7 +10,11 @@
                 display: grid;
                 height: 100vh;
                 grid-template-columns: repeat(2, 1fr);
+                /* 📌 스파르타 강의 내용 중 넓이 */
+                /* width : 1000px; */
+                /* grid-template-columns: repeat(2, 500px); */
                 grid-template-rows: 0.5fr 3fr;
+                gap: 40px 30px;
             }
             .grid-container .title {
                 grid-column: 1/3;
@@ -18,7 +22,17 @@
                 flex-direction: column;
                 align-items: center;
                 margin-top: 40px;
-                background-color: pink;
+            }
+
+            .title > h1 {
+                position: relative;
+            }
+
+            .title .fa-pagelines {
+                position: absolute;
+                top: -25px;
+                right: -25px;
+                color: green;
             }
 
             .title .btn {
@@ -41,19 +55,90 @@
             .grid-container .map {
                 background-color: rosybrown;
             }
-            .grid-container .text {
-                background-color: wheat;
+
+            .grid-container .story {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .story .img {
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+                width: 90%;
+                height: 300px;
+                border-radius: 1rem;
+                background: url(./image.jpg) no-repeat center / cover;
+                cursor: pointer;
+            }
+
+            .story .img:active {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 95%;
+                height: 95%;
+            }
+
+            .story .img:active > span {
+                display: none;
+            }
+
+            .story .img > span {
+                display: block;
+                background: rgba(255, 255, 255, 0.5);
+                height: 30px;
+                line-height: 30px;
+                font-size: 13px;
+                padding: 5px;
+                margin: 0 5px 5px 0;
+                border-radius: 1rem;
+                text-align: center;
+            }
+
+            .story > h2 {
+                margin: 20px 0 0 0;
+                color: green;
+            }
+
+            .story > h3 {
+                margin: 5px 0 0 0;
+                font-size: 16px;
+                font-weight: normal;
+                color: #7e7e7e;
+            }
+
+            .story > p {
+                width: 90%;
+                line-height: 1.5;
+            }
+
+            .story > p > span {
+                font-weight: bolder;
+                color: #e8344e;
             }
         </style>
     </head>
     <body>
         <div class="grid-container">
             <header class="title">
-                <h1>나의 추억거리를 공유합니다.</h1>
+                <h1>나의 추억거리를 공유합니다.<i class="fab fa-pagelines"></i></h1>
                 <a class="btn" href="http://spartacodingclub.shop/free/202105/exhibition" target="_blank">모든 수강생들의 추억 보러가기</a>
             </header>
             <section class="map"></section>
-            <section class="text"></section>
+            <section class="story">
+                <div class="img"><span>자세히보기</span></div>
+                <h2>비밀의숲</h2>
+                <h3>경상북도 안동시 상아동 423</h3>
+                <p>
+                    <span>#낙강물길공원</span> <span>#피크닉스팟</span> <br />
+                    폭포와 호수를 바라보며 피크닉 하기 좋은 장소! 숲속 도서관도 있어서, 책 읽기에도 좋다. 숲속 쉼터를 지나 산책로를 따라
+                    올라가면, 안동댐을 한눈에 내려다볼 수도 있다!
+                </p>
+            </section>
         </div>
+        <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous"></script>
     </body>
 </html>
