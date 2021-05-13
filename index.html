@@ -8,13 +8,11 @@
         <style>
             .grid-container {
                 display: grid;
+                padding: 5%;
                 height: 100vh;
                 grid-template-columns: repeat(2, 1fr);
-                /* 📌 스파르타 강의 내용 중 넓이 */
-                /* width : 1000px; */
-                /* grid-template-columns: repeat(2, 500px); */
-                grid-template-rows: 0.5fr 3fr;
-                gap: 40px 30px;
+                grid-template-rows: 0.5fr max-content;
+                gap: 40px 5%;
             }
             .grid-container .title {
                 grid-column: 1/3;
@@ -54,6 +52,9 @@
 
             .grid-container .map {
                 background-color: rosybrown;
+                width: 100%;
+                z-index: -1;
+                border-radius: 1rem;
             }
 
             .grid-container .story {
@@ -66,7 +67,7 @@
                 display: flex;
                 align-items: flex-end;
                 justify-content: flex-end;
-                width: 90%;
+                width: 100%;
                 height: 300px;
                 border-radius: 1rem;
                 background: url(./image.jpg) no-repeat center / cover;
@@ -92,8 +93,9 @@
                 height: 30px;
                 line-height: 30px;
                 font-size: 13px;
-                padding: 5px;
-                margin: 0 5px 5px 0;
+                font-weight: bold;
+                padding: 5px 7px;
+                margin: 0 7px 7px 0;
                 border-radius: 1rem;
                 text-align: center;
             }
@@ -111,7 +113,6 @@
             }
 
             .story > p {
-                width: 90%;
                 line-height: 1.5;
             }
 
@@ -119,15 +120,33 @@
                 font-weight: bolder;
                 color: #e8344e;
             }
+            @media screen and (max-width: 700px) {
+                .grid-container {
+                    grid-template-columns: 1fr;
+                    grid-template-rows: 0.5fr 3fr 3fr;
+                    gap: 40px 0;
+                }
+                .grid-container .title {
+                    grid-row: 1/2;
+                }
+                .grid-container .map {
+                    grid-row: 2/3;
+                    width: 100%;
+                    height: 300px;
+                }
+                .grid-container .story {
+                    grid-row: 3/4;
+                }
+            }
         </style>
     </head>
     <body>
         <div class="grid-container">
             <header class="title">
-                <h1>나의 추억거리를 공유합니다.<i class="fab fa-pagelines"></i></h1>
+                <h1>나의 추억거리<i class="fab fa-pagelines"></i></h1>
                 <a class="btn" href="http://spartacodingclub.shop/free/202105/exhibition" target="_blank">모든 수강생들의 추억 보러가기</a>
             </header>
-            <section class="map"></section>
+            <section id="js-map" class="map"></section>
             <section class="story">
                 <div class="img"><span>자세히보기</span></div>
                 <h2>비밀의숲</h2>
@@ -140,5 +159,29 @@
             </section>
         </div>
         <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=535068688f1a8bca1c21a9445ede0a89"></script>
+        <script>
+            var markerPosition = new kakao.maps.LatLng(36.58797914364686, 128.77085159768384);
+            var mapContainer = document.getElementById('js-map'), // 지도를 표시할 div
+                mapOption = {
+                    center: markerPosition, // 지도의 중심좌표
+                    level: 3, // 지도의 확대 레벨
+                };
+
+            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+            var imageSrc = 'https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/2021_05_free_parents/sparta-marker.png';
+            var imageSize = new kakao.maps.Size(65, 86);
+            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: markerPosition,
+                image: markerImage,
+            });
+        </script>
     </body>
 </html>
+
+<!-- 535068688f1a8bca1c21a9445ede0a89 -->
+<!-- 36.58797914364686, 128.77085159768384 -->
