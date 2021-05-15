@@ -4,8 +4,15 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700&family=Jua&display=swap" rel="stylesheet" />
         <title>나의 추억거리를 공유합니다.</title>
         <style>
+            * {
+                font-family: 'Jua', sans-serif;
+                font-weight: normal;
+            }
+
             .grid-container {
                 display: grid;
                 padding: 5%;
@@ -24,6 +31,7 @@
 
             .title > h1 {
                 position: relative;
+                font-weight: bold;
             }
 
             .title .fa-pagelines {
@@ -43,7 +51,6 @@
                 text-align: center;
                 line-height: 40px;
                 color: #e8344e;
-                font-weight: bold;
             }
             .btn:hover {
                 background: #e8344e;
@@ -89,11 +96,12 @@
 
             .story .img > span {
                 display: block;
-                background: rgba(255, 255, 255, 0.5);
+                background: rgba(255, 255, 255, 0.6);
+                color: #333;
                 height: 30px;
                 line-height: 30px;
                 font-size: 13px;
-                font-weight: bold;
+                font-weight: normal;
                 padding: 5px 7px;
                 margin: 0 7px 7px 0;
                 border-radius: 1rem;
@@ -103,21 +111,24 @@
             .story > h2 {
                 margin: 20px 0 0 0;
                 color: green;
+                font-weight: normal;
             }
 
             .story > h3 {
                 margin: 5px 0 0 0;
                 font-size: 16px;
-                font-weight: normal;
+                font-weight: lighter;
                 color: #7e7e7e;
             }
 
             .story > p {
                 line-height: 1.5;
+                color: #333333;
+                font-weight: lighter;
             }
 
             .story > p > span {
-                font-weight: bolder;
+                font-weight: bold;
                 color: #e8344e;
             }
             @media screen and (max-width: 700px) {
